@@ -5,6 +5,8 @@ import ContactSection from '@/Components/dashboard/Contact'
 import WhyChooseUs from '@/Components/dashboard/whyus'
 import Hero from '@/Components/Hero'
 import React from 'react'
+import BeforeAfterSlider from '@/Components/BeforeAfter'
+import Testimonials from '@/Components/dashboard/Testimonial'
 
 const page = () => {
   return (
@@ -39,6 +41,21 @@ const page = () => {
           </section>
 
           <section
+            id="Beforeafter"
+            className=" py-10 bg-gray-50 flex items-center justify-center flex-col text-center"
+            aria-labelledby="Beforeafter-heading"
+          >
+            <div className='flex items-center justify-center flex-col gap-4 mb-10'>
+              <h2>
+                The difference we make
+              </h2>
+              <p>
+                Experience the transformation our professional cleaning services can make. Drag the slider to see the remarkable before and after results.
+              </p>
+            </div>
+            <BeforeAfterSlider />
+          </section>
+          <section
             id="WhyChooseUs"
             className=" py-10 bg-gray-50 flex items-center justify-center"
             aria-labelledby="WhyChooseUs-heading"
@@ -50,6 +67,7 @@ const page = () => {
             className=" py-10 bg-gray-50 flex items-center justify-center"
             aria-labelledby="testimonial-heading"
           >
+            <Testimonials />
           </section>
 
           <section

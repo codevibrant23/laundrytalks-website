@@ -107,8 +107,7 @@ export default function SiteFooter() {
                             <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
                             <p>Sunday: Closed</p>
                         </div>
-                        <Link
-                            href="#contact"
+                        <Link href={'/contact-us'}
                             className="mt-6 inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold transition-colors"
                         >
                             Book Now
@@ -126,15 +125,15 @@ export default function SiteFooter() {
                 >
                     <p>&copy; {new Date().getFullYear()} Pickup Service. All rights reserved.</p>
                     <div className="mt-2 flex justify-center space-x-4">
-                        <Link href="#" className="hover:underline">
+                        <Link href="/terms-and-conditions" className="hover:underline">
                             Terms & Conditions
                         </Link>
-                        <Link href="#" className="hover:underline">
+                        <Link href="/privacy-policy" className="hover:underline">
                             Privacy Policy
                         </Link>
                     </div>
                 </motion.div>
             </div>
-        </motion.footer>
+        </motion.footer >
     )
 }

@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -23,31 +24,19 @@ const Navbar = () => {
     }, [scrollY])
 
     const navItems = [
-        { name: "Home", href: "#home", ariaLabel: "Navigate to home section" },
-        { name: "About Us", href: "#about", ariaLabel: "Navigate to about us section" },
-        { name: "Gallery", href: "#gallery", ariaLabel: "Navigate to gallery section" },
-        { name: "Services", href: "#services", ariaLabel: "Navigate to services section" },
-        { name: "Pricing", href: "#pricing", ariaLabel: "Navigate to pricing section" },
-        { name: "Contact Us", href: "#contact", ariaLabel: "Navigate to contact section" },
+        // { name: "Home", href: "#home", ariaLabel: "Navigate to home page" },
+        { name: "About Us", href: "/about-us", ariaLabel: "Navigate to about us page" },
+        { name: "Gallery", href: "/gallery", ariaLabel: "Navigate to gallery page" },
+        { name: "Services", href: "/services", ariaLabel: "Navigate to services page" },
+        { name: "Pricing", href: "/pricing", ariaLabel: "Navigate to pricing page" },
+        { name: "Contact Us", href: "/contact-us", ariaLabel: "Navigate to contact page" },
     ]
 
     const handleMenuToggle = () => {
         setIsMenuOpen(!isMenuOpen)
     }
 
-    const handleNavClick = (e, href) => {
-        e.preventDefault()
-        setIsMenuOpen(false)
 
-        const element = document.querySelector(href)
-        if (element) {
-            const offsetTop = element.offsetTop - 80
-            window.scrollTo({
-                top: offsetTop,
-                behavior: "smooth",
-            })
-        }
-    }
 
     return (
         <motion.nav
@@ -70,8 +59,8 @@ const Navbar = () => {
                         className="flex-shrink-0"
                     >
                         <a
-                            href="#home"
-                            onClick={(e) => handleNavClick(e, "#home")}
+                            href="/"
+                            // onClick={(e) => handleNavClick(e, "#home")}
                             aria-label="PickupPro homepage"
                             className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md"
                         >
@@ -119,12 +108,14 @@ const Navbar = () => {
                         transition={{ duration: 0.5 }}
                         className="hidden lg:block"
                     >
-                        <Button
-                            className="font-bold bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                            aria-label="Book a pickup service"
-                        >
-                            Book a Pickup
-                        </Button>
+                        <Link href={'/contact-us'}>
+                            <Button
+                                className="font-bold bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                aria-label="Book a pickup service"
+                            >
+                                Book a Pickup
+                            </Button>
+                        </Link>
                     </motion.div>
 
                     {/* Mobile menu button */}
@@ -169,12 +160,14 @@ const Navbar = () => {
                         ))}
                     </ul>
                     <div className="px-3 py-2">
-                        <Button
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                            aria-label="Book a pickup service"
-                        >
-                            Book a Pickup
-                        </Button>
+                        <Link href={'/contact-us'}>
+                            <Button
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                aria-label="Book a pickup service"
+                            >
+                                Book a Pickup
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </motion.div>
