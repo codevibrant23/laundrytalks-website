@@ -1,12 +1,12 @@
-import AboutUs from '@/Components/dashboard/aboutus'
-import HowItWorks from '@/Components/dashboard/howitworks'
-import OurServices from '@/Components/dashboard/services'
-import ContactSection from '@/Components/dashboard/Contact'
-import WhyChooseUs from '@/Components/dashboard/whyus'
-import Hero from '@/Components/Hero'
+import AboutUs from '@/components/dashboard/aboutus'
+import HowItWorks from '@/components/dashboard/howitworks'
+import OurServices from '@/components/dashboard/services'
+import ContactSection from '@/components/dashboard/Contact'
+import WhyChooseUs from '@/components/dashboard/whyus'
+import Hero from '@/components/Hero'
 import React from 'react'
-import BeforeAfterSlider from '@/Components/BeforeAfter'
-import Testimonials from '@/Components/dashboard/Testimonial'
+import BeforeAfterSlider from '@/components/BeforeAfter'
+import Testimonials from '@/components/dashboard/Testimonial'
 
 const page = () => {
   return (

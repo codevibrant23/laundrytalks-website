@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Inter, Poppins } from 'next/font/google';
-import Navbar from "@/Components/Navbar";
-import SiteFooter from "@/Components/Footer";
+import Navbar from "@/components/Navbar";
+import SiteFooter from "@/components/Footer";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const poppins = Poppins({

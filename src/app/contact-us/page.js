@@ -14,7 +14,7 @@ import {
     CheckCircle,
     Headphones,
 } from "lucide-react"
-import Testimonials from "@/Components/dashboard/Testimonial"
+import Testimonials from "@/components/dashboard/Testimonial"
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({

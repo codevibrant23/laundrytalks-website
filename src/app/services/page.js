@@ -17,7 +17,7 @@ import {
     ArrowRight,
     ChevronRight,
 } from "lucide-react"
-import Testimonials from "@/Components/dashboard/Testimonial"
+import Testimonials from "@/components/dashboard/Testimonial"
 
 export default function ServicesPage() {
     const [activeTab, setActiveTab] = useState("dry-cleaning")
