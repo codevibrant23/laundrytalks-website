@@ -1,0 +1,11 @@
+// app/robots.js
+export default function robots() {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/admin', '/api/'], // Add any private routes you don't want indexed
+    },
+    sitemap: 'https://www.laundrytalks.in/', // Replace with your actual domain
+  }
+}
