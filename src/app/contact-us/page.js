@@ -72,21 +72,21 @@ export default function ContactPage() {
     ]
 
     const locations = [
-        // {
-        //     name: "Downtown Branch",
-        //     address: "123 Clean Street, Downtown District, NY 10001",
-        //     phone: "+1 (555) 123-4567",
-        //     hours: "Mon-Fri: 7AM-9PM, Sat-Sun: 8AM-8PM",
-        //     mapUrl:
-        //         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878459418!3d40.74844097932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1635959655654!5m2!1sen!2sus",
-        // },
         {
             name: "Plant",
-            address: "A 48, Sector 64, Noida",
+            address: "A 48, Block A, Sector 64, Noida, Uttar Pradesh 201309",
             phone: "+ 91 92050 32800",
             hours: "Mon-Sat: 10AM-10PM",
             mapUrl:
-                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d336.52804796637963!2d77.37742539190494!3d28.61121402727671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce561e880f079%3A0xca43e0bf718c34cd!2sa%2C%20A-048%2C%20Block%20A%2C%20Sector%2064%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e1!3m2!1sen!2sin!4v1753730848822!5m2!1sen!2sin",
+                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.6218115252777!2d77.37485337509483!3d28.6111202850534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5dd88f67d81%3A0x1ddcc0762270da5d!2sLaundry%20Talks%20Private%20Limited!5e0!3m2!1sen!2sin!4v1753812797778!5m2!1sen!2sin",
+        },
+        {
+            name: "Indirapuram Branch",
+            address: "Jaipuriya Sun Rise Plaza, SC-152, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014",
+            phone: "+ 91 92050 32800",
+            hours: "Mon-Sat: 10AM-10PM",
+            mapUrl:
+                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.6293988086923!2d77.37398247509591!3d28.6408673837028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb90a0f120af%3A0xc055df32a4a0231c!2sLaundry%20Talks%20-%20Indirapuram!5e0!3m2!1sen!2sin!4v1753812844213!5m2!1sen!2sin",
         },
     ]
 
@@ -487,7 +487,7 @@ export default function ContactPage() {
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">Visit Our Locations</h2>
                         <p className="text-gray-600 text-lg">Two convenient locations to serve you better</p>
                     </div>
-                    <div className="grid lg:grid-cols-1 gap-8">
+                    <div className="grid lg:grid-cols-2 gap-8">
                         {locations.map((location, index) => (
                             <motion.div
                                 key={index}

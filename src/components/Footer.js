@@ -35,10 +35,10 @@ export default function SiteFooter() {
                             {/* <Mountain className="size-8 text-blue-700" />
                             <span className="ml-2 text-2xl font-bold text-gray-900">Pickup Service</span> */}
                             <Image
-                                src="/logo.avif"
+                                src="/logo.png"
                                 alt="PickupPro logo"
-                                width={100}
-                                height={100}
+                                width={800}
+                                height={800}
                                 className="h-12 w-auto"
                             />
                         </Link>
@@ -62,20 +62,20 @@ export default function SiteFooter() {
                     <motion.div variants={itemVariants} className="text-center md:text-left">
                         <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
                         <nav className="flex flex-col space-y-2">
-                            <Link href="#home" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
+                            <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
                                 Home
                             </Link>
-                            <Link href="#about-us" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
+                            <Link href="/about-us" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
                                 About Us
                             </Link>
-                            <Link href="#services" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
+                            <Link href="/services" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
                                 Services
                             </Link>
 
-                            <Link href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
-                                Testimonials
+                            <Link href="/pricing" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
+                                Pricing
                             </Link>
-                            <Link href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
+                            <Link href="/contact-us" className="text-gray-700 hover:text-blue-600 transition-colors text-sm">
                                 Contact
                             </Link>
                         </nav>
