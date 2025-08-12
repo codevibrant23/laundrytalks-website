@@ -152,21 +152,27 @@ export default function Testimonials({
         setTimeout(() => setIsAutoplay(true), 2000)
     }
 
-    // Touch handlers
+    // Touch handlers - IMPROVED
     const handleTouchStart = (e) => {
         setIsDragging(true)
         setIsAutoplay(false)
         setDragStart(e.touches[0].clientX)
+        // Prevent default to avoid iOS bounce/scroll issues
+        e.preventDefault()
     }
 
     const handleTouchMove = (e) => {
         if (!isDragging) return
         const diff = e.touches[0].clientX - dragStart
         setDragOffset(diff)
+        // Prevent default to stop page scrolling during horizontal drag
+        e.preventDefault()
     }
 
-    const handleTouchEnd = () => {
+    const handleTouchEnd = (e) => {
         handleMouseUp()
+        // Prevent default to avoid tap events
+        e.preventDefault()
     }
 
     // Navigation functions
@@ -212,7 +218,7 @@ export default function Testimonials({
 
     return (
         <motion.div
-            className="py-16"
+            className="py-16 overflow-hidden" // ADDED overflow-hidden
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -223,9 +229,10 @@ export default function Testimonials({
                 <p className="text-gray-600 text-lg max-w-2xl mx-auto">{subtitle}</p>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* IMPROVED: Added overflow-hidden and proper mobile padding */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
                 {/* Carousel Container */}
-                <div className="relative">
+                <div className="relative overflow-hidden"> {/* ADDED overflow-hidden */}
                     {/* Navigation Arrows */}
                     <button
                         onClick={goToPrevious}
@@ -241,19 +248,38 @@ export default function Testimonials({
                         <ChevronRight size={20} className="text-gray-600" />
                     </button>
 
-                    {/* Carousel Track */}
+                    {/* MOBILE NAVIGATION ARROWS */}
+                    <button
+                        onClick={goToPrevious}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-all duration-200 md:hidden flex items-center justify-center"
+                        disabled={currentIndex === 0}
+                    >
+                        <ChevronLeft size={16} className="text-gray-600" />
+                    </button>
+
+                    <button
+                        onClick={goToNext}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-all duration-200 md:hidden flex items-center justify-center"
+                        disabled={currentIndex === getMaxIndex()}
+                    >
+                        <ChevronRight size={16} className="text-gray-600" />
+                    </button>
+
+                    {/* IMPROVED: Carousel Track with better mobile handling */}
                     <div
                         ref={containerRef}
-                        className="overflow-hidden cursor-grab active:cursor-grabbing"
+                        className="overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y" // ADDED touch-pan-y
                         onMouseDown={handleMouseDown}
                         onMouseMove={handleMouseMove}
                         onMouseUp={handleMouseUp}
-                        // onMouseLeave={handleMouseUp}
                         onTouchStart={handleTouchStart}
                         onTouchMove={handleTouchMove}
                         onTouchEnd={handleTouchEnd}
                         onMouseEnter={() => setIsAutoplay(false)}
                         onMouseLeave={() => !isDragging && setTimeout(() => setIsAutoplay(true), 1000)}
+                        // ADDED: Prevent context menu on long press (mobile)
+                        onContextMenu={(e) => e.preventDefault()}
+                        style={{ touchAction: 'pan-y' }} // ADDED: Allow vertical scrolling only
                     >
                         <div
                             className="flex transition-transform duration-500 ease-out"
@@ -263,18 +289,18 @@ export default function Testimonials({
                             }}
                         >
                             {testimonials.map((testimonial, index) => (
-                                <div key={index} className="flex-shrink-0 px-3" style={{ width: `${100 / itemsPerView}%` }}>
+                                <div
+                                    key={index}
+                                    className="flex-shrink-0 px-2 md:px-3" // REDUCED mobile padding
+                                    style={{ width: `${100 / itemsPerView}%` }}
+                                >
                                     <motion.div
-                                        className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden group h-full"
-                                        whileHover={{
-                                            scale: 1.02,
-                                            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                                        }}
+                                        className="bg-white p-4 md:p-8 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden group h-full" // REDUCED mobile padding
                                         transition={{ duration: 0.2 }}
                                     >
                                         {/* Quote Icon */}
                                         <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                            <Quote size={40} className="text-blue-500" />
+                                            <Quote size={32} className="text-blue-500 md:w-10 md:h-10" /> {/* SMALLER on mobile */}
                                         </div>
 
                                         {/* Rating Stars */}
@@ -286,28 +312,30 @@ export default function Testimonials({
                                                     animate={{ scale: 1 }}
                                                     transition={{ delay: i * 0.1, duration: 0.3 }}
                                                 >
-                                                    <Star className="text-yellow-400 fill-current" size={18} />
+                                                    <Star className="text-yellow-400 fill-current" size={16} /> {/* SMALLER stars */}
                                                 </motion.div>
                                             ))}
                                         </div>
 
                                         {/* Testimonial Content */}
-                                        <p className="text-gray-600 mb-6 leading-relaxed italic">"{testimonial.content}"</p>
+                                        <p className="text-gray-600 mb-4 md:mb-6 leading-relaxed italic text-sm md:text-base"> {/* SMALLER text on mobile */}
+                                            "{testimonial.content}"
+                                        </p>
 
                                         {/* Customer Info */}
                                         <div className="flex items-center space-x-3 mt-auto">
-                                            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+                                            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm md:text-lg"> {/* SMALLER avatar */}
                                                 {testimonial.name.charAt(0)}
                                             </div>
                                             <div>
-                                                <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                                                <p className="text-sm text-gray-500">{testimonial.role}</p>
+                                                <p className="font-semibold text-gray-900 text-sm md:text-base">{testimonial.name}</p>
+                                                <p className="text-xs md:text-sm text-gray-500">{testimonial.role}</p>
                                                 {testimonial.location && <p className="text-xs text-gray-400">{testimonial.location}</p>}
                                             </div>
                                         </div>
 
-                                        {/* Hover Effect Border */}
-                                        <div className="absolute inset-0 border-2 border-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                                        {/* Hover Effect Border - DISABLED on mobile */}
+                                        <div className="absolute inset-0 border-2 border-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden md:block"></div>
                                     </motion.div>
                                 </div>
                             ))}
@@ -316,36 +344,21 @@ export default function Testimonials({
                 </div>
 
                 {/* Dots Navigation */}
-                {totalDots > 1 && (
-                    <div className="flex justify-center mt-8 space-x-2">
+                {/* {totalDots > 1 && (
+                    <div className="flex justify-center mt-6 md:mt-8 space-x-2"> 
                         {Array.from({ length: totalDots }).map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => goToSlide(index)}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-blue-500 scale-125" : "bg-gray-300 hover:bg-gray-400"
-                                    }`}
+                                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                                    index === currentIndex 
+                                        ? "bg-blue-500 scale-125" 
+                                        : "bg-gray-300 hover:bg-gray-400"
+                                }`} 
                             />
                         ))}
                     </div>
-                )}
-
-                {/* Progress Bar */}
-                {/* <div className="mt-4 max-w-xs mx-auto">
-                    <div className="w-full bg-gray-200 rounded-full h-1">
-                        <motion.div
-                            className="bg-blue-500 h-1 rounded-full"
-                            initial={{ width: "0%" }}
-                            animate={{
-                                width: isAutoplay && !isDragging ? "100%" : "0%",
-                            }}
-                            transition={{
-                                duration: isAutoplay && !isDragging ? autoplayDelay / 1000 : 0,
-                                ease: "linear",
-                                repeat: isAutoplay && !isDragging ? Number.POSITIVE_INFINITY : 0,
-                            }}
-                        />
-                    </div>
-                </div> */}
+                )} */}
             </div>
         </motion.div>
     )

@@ -49,7 +49,7 @@ export default function OurServices() {
 
     const itemVariants = {
         hidden: { opacity: 0, y: 50 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+        show: { opacity: 1, y: 0, transition: { duration: 0.2 } },
     }
 
     return (
@@ -67,8 +67,6 @@ export default function OurServices() {
                 </motion.h2>
                 <motion.div
                     variants={containerVariants}
-                    initial="hidden"
-                    whileInView="show"
                     viewport={{ once: true, amount: 0.3 }}
                     className="space-y-16"
                 >

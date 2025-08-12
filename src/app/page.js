@@ -64,7 +64,7 @@ const page = () => {
           </section>
           <section
             id="testimonial"
-            className=" py-10 bg-gray-50 flex items-center justify-center"
+            className=" py-10 bg-gray-50 flex items-center justify-center max-w-[95%] mx-auto"
             aria-labelledby="testimonial-heading"
           >
             <Testimonials />
