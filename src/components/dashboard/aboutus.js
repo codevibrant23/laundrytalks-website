@@ -77,8 +77,8 @@ export default function AboutUs() {
 
                     {/* Right Image */}
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="relative h-80 sm:h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-xl"
