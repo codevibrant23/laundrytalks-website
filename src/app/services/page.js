@@ -348,64 +348,90 @@ export default function ServicesPage() {
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
                     >
-                        {/* Timeline Line */}
+                        {/* Timeline Lines */}
                         <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200 hidden md:block"></div>
+                        <div className="absolute left-5 top-0 h-full w-0.5 bg-blue-200 md:hidden"></div>
 
                         {/* Step 1 */}
                         <div className="relative z-10">
                             <motion.div
-                                className="flex flex-col md:flex-row items-center mb-16"
+                                className="flex flex-col md:flex-row items-center mb-8 md:mb-16"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
-                                    <div className="bg-white p-6 rounded-2xl shadow-sm inline-block">
+                                <div className="md:w-1/2 md:pr-12 mb-4 md:mb-0 md:text-right">
+                                    <div className="p-6 rounded-2xl  inline-block ml-12 md:ml-0">
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">1. Schedule Pickup</h3>
                                         <p className="text-gray-700">Call or WhatsApp us at +91 92050 32800</p>
                                     </div>
                                 </div>
-                                <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center z-20 mx-auto md:mx-0">
+                                <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center z-20 absolute left-0 md:relative md:left-auto md:mx-0">
                                     <Phone className="text-white" size={20} />
                                 </div>
-                                <div className="md:w-1/2 md:pl-12 md:text-left">
-                                    <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-lg mt-6 md:mt-0">
+                                <div className="md:w-1/2 md:pl-12 md:text-left w-full">
+                                    <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-lg mt-4 md:mt-0 ml-12 md:ml-0">
                                         <Image
-                                            src="/schedulePickup.jpg"
+                                            src="/schedulepickup1.jpg"
                                             alt="Schedule your laundry pickup"
                                             fill
                                             sizes="(max-width: 768px) 100vw, 50vw"
                                             className="object-cover"
+                                            priority
                                         />
                                     </div>
                                 </div>
                             </motion.div>
 
-                            {/* Step 2 */}
+                            {/* Step 2 - Fixed mobile visibility */}
                             <motion.div
-                                className="flex flex-col md:flex-row items-center mb-16"
+                                className="flex flex-col md:flex-row items-center mb-8 md:mb-16"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right order-2 md:order-1">
-                                    <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-lg mt-6 md:mt-0">
+                                {/* Mobile: Show content first, then image */}
+                                <div className="block md:hidden w-full mb-4">
+                                    <div className="bg-white p-6 rounded-2xl shadow-sm inline-block ml-12">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-2">2. We Collect</h3>
+                                        <p className="text-gray-700">Doorstep pickup at your convenience</p>
+                                    </div>
+                                </div>
+
+                                {/* Mobile: Show image */}
+                                <div className="block md:hidden w-full mb-4">
+                                    <div className="relative h-48 rounded-2xl overflow-hidden shadow-lg ml-12">
                                         <Image
-                                            src="/weCollect.jpg"
+                                            src="/wecollect1.jpg"
                                             alt="We collect your laundry"
                                             fill
-                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                            sizes="100vw"
                                             className="object-cover"
                                         />
                                     </div>
                                 </div>
-                                <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center z-20 mx-auto md:mx-0 order-1 md:order-2">
+
+                                {/* Desktop layout */}
+                                <div className="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+                                    <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg">
+                                        <Image
+                                            src="/wecollect1.jpg"
+                                            alt="We collect your laundry"
+                                            fill
+                                            sizes="50vw"
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center z-20 absolute left-0 md:relative md:left-auto md:mx-0">
                                     <Truck className="text-white" size={20} />
                                 </div>
-                                <div className="md:w-1/2 md:pl-12 md:text-left order-3">
-                                    <div className="bg-white p-6 rounded-2xl shadow-sm inline-block">
+
+                                <div className="hidden md:block md:w-1/2 md:pl-12 md:text-left">
+                                    <div className=" p-6 rounded-2xl inline-block">
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">2. We Collect</h3>
                                         <p className="text-gray-700">Doorstep pickup at your convenience</p>
                                     </div>
@@ -414,23 +440,23 @@ export default function ServicesPage() {
 
                             {/* Step 3 */}
                             <motion.div
-                                className="flex flex-col md:flex-row items-center mb-16"
+                                className="flex flex-col md:flex-row items-center mb-8 md:mb-16"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
-                                    <div className="bg-white p-6 rounded-2xl shadow-sm inline-block">
+                                <div className="md:w-1/2 md:pr-12 mb-4 md:mb-0 md:text-right">
+                                    <div className=" p-6 rounded-2xl inline-block ml-12 md:ml-0">
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">3. Professional Cleaning</h3>
                                         <p className="text-gray-700">Handled with care using advanced machines</p>
                                     </div>
                                 </div>
-                                <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center z-20 mx-auto md:mx-0">
+                                <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center z-20 absolute left-0 md:relative md:left-auto md:mx-0">
                                     <Sparkles className="text-white" size={20} />
                                 </div>
-                                <div className="md:w-1/2 md:pl-12 md:text-left">
-                                    <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-lg mt-6 md:mt-0">
+                                <div className="md:w-1/2 md:pl-12 md:text-left w-full">
+                                    <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-lg mt-4 md:mt-0 ml-12 md:ml-0">
                                         <Image
                                             src="/media/1.jpg"
                                             alt="Professional cleaning process"
@@ -442,7 +468,7 @@ export default function ServicesPage() {
                                 </div>
                             </motion.div>
 
-                            {/* Step 4 */}
+                            {/* Step 4 - Fixed mobile visibility */}
                             <motion.div
                                 className="flex flex-col md:flex-row items-center"
                                 initial={{ opacity: 0, y: 20 }}
@@ -450,22 +476,46 @@ export default function ServicesPage() {
                                 transition={{ duration: 0.5 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right order-2 md:order-1">
-                                    <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden shadow-lg mt-6 md:mt-0">
+                                {/* Mobile: Show content first, then image */}
+                                <div className="block md:hidden w-full mb-4">
+                                    <div className=" p-6 rounded-2xl inline-block ml-12">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-2">4. Delivery to Your Door</h3>
+                                        <p className="text-gray-700">Get your clothes fresh, folded, and on time</p>
+                                    </div>
+                                </div>
+
+                                {/* Mobile: Show image */}
+                                <div className="block md:hidden w-full">
+                                    <div className="relative h-48 rounded-2xl overflow-hidden shadow-lg ml-12">
                                         <Image
-                                            src="/deliverytoYourDoor.jpg"
+                                            src="/deliverytoyourdoor1.jpg"
                                             alt="Delivery to your door"
                                             fill
-                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                            sizes="100vw"
                                             className="object-cover"
                                         />
                                     </div>
                                 </div>
-                                <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center z-20 mx-auto md:mx-0 order-1 md:order-2">
+
+                                {/* Desktop layout */}
+                                <div className="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+                                    <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg">
+                                        <Image
+                                            src="/deliverytoyourdoor1.jpg"
+                                            alt="Delivery to your door"
+                                            fill
+                                            sizes="50vw"
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center z-20 absolute left-0 md:relative md:left-auto md:mx-0">
                                     <Truck className="text-white" size={20} />
                                 </div>
-                                <div className="md:w-1/2 md:pl-12 md:text-left order-3">
-                                    <div className="bg-white p-6 rounded-2xl shadow-sm inline-block">
+
+                                <div className="hidden md:block md:w-1/2 md:pl-12 md:text-left">
+                                    <div className=" p-6 rounded-2xl inline-block">
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">4. Delivery to Your Door</h3>
                                         <p className="text-gray-700">Get your clothes fresh, folded, and on time</p>
                                     </div>
@@ -475,6 +525,8 @@ export default function ServicesPage() {
                     </motion.div>
                 </div>
             </div>
+
+
 
             {/* Service Areas Section */}
             {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
